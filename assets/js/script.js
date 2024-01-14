@@ -13,8 +13,21 @@ document.addEventListener("DOMContentLoaded", function () {
         options: ["2OPTION1", "2OPTION2", "2OPTION3", "2OPTION4"]
     };
 
-    questions[1] = questionOne;
-    questions[2] = questionTwo;
+    // Array to hold order of questions
+    let questionPositions = [];
+    // Generate random positions for questions which must be unique
+    for (let i = 0; i < 2; i++)
+    {
+        let rand;
+        do {
+            rand = Math.floor(Math.random() * 2);
+        } while (questionPositions.includes(rand));
+        questionPositions[i] = rand;
+    }
+
+
+    questions[questionPositions[0] + 1] = questionOne;
+    questions[questionPositions[1] + 1] = questionTwo;
 
     let questionNumber = 1;
 
@@ -32,8 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
  * Generates a question from the available questions and displays it on the page
  */
 function generateQuestion(questionNumber, questions) {
-    
-    console.log(`Generate Q number: ${questionNumber}`);
 
     // If the next question button has been created, remove it
     let nextQuestionButton = document.getElementById("btn-nextQ");
@@ -47,7 +58,8 @@ function generateQuestion(questionNumber, questions) {
 
     let options = document.getElementsByClassName("options");
     for (let i = 0; i < options.length; i++) {
-        options[i].innerText = question.options[i];
+        let optionText = options[i].getElementsByTagName("label")[0];
+        optionText.innerText = question.options[i];
     }
 }
 
@@ -57,17 +69,15 @@ function generateQuestion(questionNumber, questions) {
 function checkAnswer(questionNumber, questions) {
 
     // TO DO: Check if selected answer is correct here and then make a decision on what to do with that
-
-    console.log(`Check Answer Q number: ${questionNumber}`);
     
-    if (questionNumber < questions.length && document.ge)
+    // Check if there are any more questions and if the next question button hasn't already been created
+    if (questionNumber < questions.length && document.getElementById("btn-nextQ") === null)
     {
         createNextQuestionButton(questionNumber, questions);
     }
 }
 
 function createNextQuestionButton(questionNumber, questions) {
-    console.log(`Create Button Q number: ${questionNumber}`);
     let body = document.body;
     let nextQuestionButton = document.createElement("button");
     nextQuestionButton.id = "btn-nextQ";
