@@ -60,7 +60,7 @@ function checkAnswer(questionNumber, questions) {
 
     console.log(`Check Answer Q number: ${questionNumber}`);
     
-    if (questionNumber < questions.length)
+    if (questionNumber < questions.length && document.ge)
     {
         createNextQuestionButton(questionNumber, questions);
     }
