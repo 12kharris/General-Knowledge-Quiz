@@ -5,19 +5,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let questionOne = {
         questionText: "QUESTION 1 TEXT",
-        options: ["OPTION1", "OPTION2", "OPTION3", "OPTION4"]
+        options: [
+            { option: "OPTION1", correct: 1 },
+            { option: "OPTION2", correct: 0 },
+            { option: "OPTION3", correct: 0 },
+            { option: "OPTION4", correct: 0 }
+        ]
     };
 
     let questionTwo = {
         questionText: "QUESTION 2 TEXT",
-        options: ["2OPTION1", "2OPTION2", "2OPTION3", "2OPTION4"]
+        options: [
+            { option: "2OPTION1", correct: 0 },
+            { option: "2OPTION2", correct: 0 },
+            { option: "2OPTION3", correct: 1 },
+            { option: "2OPTION4", correct: 0 }
+        ]
     };
 
     // Array to hold order of questions
     let questionPositions = [];
     // Generate random positions for questions which must be unique
-    for (let i = 0; i < 2; i++)
-    {
+    for (let i = 0; i < 2; i++) {
         let rand;
         do {
             rand = Math.floor(Math.random() * 2);
@@ -25,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
         questionPositions[i] = rand;
     }
 
-
+    // questionPositions[i] is a random int so question order now random
     questions[questionPositions[0] + 1] = questionOne;
     questions[questionPositions[1] + 1] = questionTwo;
 
@@ -57,9 +66,13 @@ function generateQuestion(questionNumber, questions) {
     questionElement.innerText = question.questionText;
 
     let options = document.getElementsByClassName("options");
+
+    // Loop through the different options, set the text of their labels and whether they are correct
     for (let i = 0; i < options.length; i++) {
         let optionText = options[i].getElementsByTagName("label")[0];
-        optionText.innerText = question.options[i];
+        let optionCorrect = options[i].getElementsByClassName("option")[0];
+        optionText.innerText = question.options[i].option;
+        optionCorrect.setAttribute("data-type", question.options[i].correct);
     }
 }
 
@@ -68,11 +81,26 @@ function generateQuestion(questionNumber, questions) {
  */
 function checkAnswer(questionNumber, questions) {
 
-    // TO DO: Check if selected answer is correct here and then make a decision on what to do with that
-    
+    // get the selected option
+    let options = document.getElementsByClassName("option");
+    let selectedOption;
+    for (let option of options) {
+        if (option.checked) {
+            selectedOption = option;
+        }
+    }
+
+    if (selectedOption.getAttribute("data-type") === "1") {
+        console.log("CORRECT!");
+    }
+    else {
+        console.log("WRONG!");
+    }
+
+    //console.log(`Correct? ${}`);
+
     // Check if there are any more questions and if the next question button hasn't already been created
-    if (questionNumber < questions.length && document.getElementById("btn-nextQ") === null)
-    {
+    if (questionNumber < questions.length && document.getElementById("btn-nextQ") === null) {
         createNextQuestionButton(questionNumber, questions);
     }
 }
@@ -83,7 +111,7 @@ function createNextQuestionButton(questionNumber, questions) {
     nextQuestionButton.id = "btn-nextQ";
     nextQuestionButton.innerText = "Next Question";
     body.appendChild(nextQuestionButton);
-    nextQuestionButton.addEventListener("click", function() {
+    nextQuestionButton.addEventListener("click", function () {
         generateQuestion(questionNumber, questions);
     });
 }
