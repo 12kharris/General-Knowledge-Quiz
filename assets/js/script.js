@@ -1,113 +1,42 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const numOfQuestions = 10;
+    const numOfOptions = 4;
 
-    // create an object to hold all possible questions
-    let questions = [];
+    class Question {
+        constructor(questionText, options) {
+            this.questionText = questionText,
+            this.AnswerOptions = new Array(numOfOptions);
+            for (let i = 0; i < numOfOptions; i++) {
+                this.AnswerOptions[i] = {option: options[i].optionText, correct: options[i].correct}
+            }
+        }
+    }
 
-    // CREATE A QUESTIONS CLASS THEN INITIALISE NEW QUESTIONS?
-    let questionOne = {
-        questionText: "QUESTION 1 TEXT",
-        options: [
-            { option: "OPTION1", correct: 1 },
-            { option: "OPTION2", correct: 0 },
-            { option: "OPTION3", correct: 0 },
-            { option: "OPTION4", correct: 0 }
-        ]
-    };
+    class Option {
+        constructor(optionText, correct) {
+            this.optionText = optionText,
+            this.correct = correct
+        }
+    }
 
-    let questionTwo = {
-        questionText: "QUESTION 2 TEXT",
-        options: [
-            { option: "2OPTION1", correct: 0 },
-            { option: "2OPTION2", correct: 0 },
-            { option: "2OPTION3", correct: 1 },
-            { option: "2OPTION4", correct: 0 }
-        ]
-    };
-
-    let questionThree = {
-        questionText: "QUESTION 3 TEXT",
-        options: [
-            { option: "3OPTION1", correct: 1 },
-            { option: "3OPTION2", correct: 0 },
-            { option: "3OPTION3", correct: 0 },
-            { option: "3OPTION4", correct: 0 }
-        ]
-    };
-
-    let questionFour = {
-        questionText: "QUESTION 4 TEXT",
-        options: [
-            { option: "4OPTION1", correct: 1 },
-            { option: "4OPTION2", correct: 0 },
-            { option: "4OPTION3", correct: 1 },
-            { option: "4OPTION4", correct: 0 }
-        ]
-    };
-
-    let questionFive = {
-        questionText: "QUESTION 5 TEXT",
-        options: [
-            { option: "5OPTION1", correct: 1 },
-            { option: "5OPTION2", correct: 0 },
-            { option: "5OPTION3", correct: 0 },
-            { option: "5OPTION4", correct: 0 }
-        ]
-    };
-
-    let questionSix = {
-        questionText: "QUESTION 6 TEXT",
-        options: [
-            { option: "6OPTION1", correct: 0 },
-            { option: "6OPTION2", correct: 0 },
-            { option: "6OPTION3", correct: 1 },
-            { option: "6OPTION4", correct: 0 }
-        ]
-    };
-
-    let questionSeven = {
-        questionText: "QUESTION 7 TEXT",
-        options: [
-            { option: "7OPTION1", correct: 0 },
-            { option: "7OPTION2", correct: 0 },
-            { option: "7OPTION3", correct: 1 },
-            { option: "7OPTION4", correct: 0 }
-        ]
-    };
-
-    let questionEight = {
-        questionText: "QUESTION 8 TEXT",
-        options: [
-            { option: "8OPTION1", correct: 0 },
-            { option: "8OPTION2", correct: 0 },
-            { option: "8OPTION3", correct: 1 },
-            { option: "8OPTION4", correct: 0 }
-        ]
-    };
-
-    let questionNine = {
-        questionText: "QUESTION 9 TEXT",
-        options: [
-            { option: "9OPTION1", correct: 0 },
-            { option: "9OPTION2", correct: 0 },
-            { option: "9OPTION3", correct: 1 },
-            { option: "9OPTION4", correct: 0 }
-        ]
-    };
-
-    let questionTen = {
-        questionText: "QUESTION 10 TEXT",
-        options: [
-            { option: "10OPTION1", correct: 0 },
-            { option: "10OPTION2", correct: 0 },
-            { option: "10OPTION3", correct: 1 },
-            { option: "10OPTION4", correct: 0 }
-        ]
-    };
+    let questionOne = new Question("QUESTION 1 TEXT", [new Option("1Option1",1), new Option("1Option2",0), new Option("1Option3",0), new Option("1Option4",0)]);
+    let questionTwo = new Question("QUESTION 2 TEXT", [new Option("2Option1",1), new Option("2Option2",0), new Option("2Option3",0), new Option("2Option4",0)]);
+    let questionThree = new Question("QUESTION 3 TEXT", [new Option("3Option1",1), new Option("3Option2",0), new Option("3Option3",0), new Option("3Option4",0)]);
+    let questionFour = new Question("QUESTION 4 TEXT", [new Option("4Option1",1), new Option("4Option2",0), new Option("4Option3",0), new Option("4Option4",0)]);
+    let questionFive = new Question("QUESTION 5 TEXT", [new Option("5Option1",1), new Option("5Option2",0), new Option("5Option3",0), new Option("5Option4",0)]);
+    let questionSix = new Question("QUESTION 6 TEXT", [new Option("6Option1",1), new Option("6Option2",0), new Option("6Option3",0), new Option("6Option4",0)]);
+    let questionSeven = new Question("QUESTION 7 TEXT", [new Option("7Option1",1), new Option("7Option2",0), new Option("7Option3",0), new Option("7Option4",0)]);
+    let questionEight = new Question("QUESTION 8 TEXT", [new Option("8Option1",1), new Option("8Option2",0), new Option("8Option3",0), new Option("8Option4",0)]);
+    let questionNine = new Question("QUESTION 9 TEXT", [new Option("9Option1",1), new Option("9Option2",0), new Option("9Option3",0), new Option("9Option4",0)]);
+    let questionTen = new Question("QUESTION 10 TEXT", [new Option("10Option1",1), new Option("10Option2",0), new Option("10Option3",0), new Option("10Option4",0)]);
+    
+    // create an array to hold all possible questions
+    let questions = new Array(numOfQuestions);
 
     // Array to hold order of questions
-    let questionPositions = [];
+    let questionPositions = new Array(numOfQuestions);
     // Generate random positions for questions which must be unique
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < numOfQuestions; i++) {
         let rand;
         do {
             rand = Math.floor(Math.random() * 10);
@@ -116,7 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // questionPositions[i] is a random int so question order now random
-    // There must be abetter way of doing this. MAYBE ADD THE QUESTIONS TO AN ENUMERABLE AND ITERATE?
     questions[questionPositions[0] + 1] = questionOne;
     questions[questionPositions[1] + 1] = questionTwo;
     questions[questionPositions[2] + 1] = questionThree;
@@ -161,8 +89,8 @@ function generateQuestion(questionNumber, questions) {
     for (let i = 0; i < options.length; i++) {
         let optionText = options[i].getElementsByTagName("label")[0];
         let optionCorrect = options[i].getElementsByClassName("option")[0];
-        optionText.innerText = question.options[i].option;
-        optionCorrect.setAttribute("data-type", question.options[i].correct);
+        optionText.innerText = question.AnswerOptions[i].option;
+        optionCorrect.setAttribute("data-type", question.AnswerOptions[i].correct);
     }
 }
 
