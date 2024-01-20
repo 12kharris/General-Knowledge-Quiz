@@ -1,3 +1,14 @@
+// TO DO:
+/*
+    1. Make it so can only submit Q once
+    2. Add feedback for which was correct answer
+    3. deselect last selected radio button
+    4. STYLE PAGE!
+    5. Add ability to retry
+    6. Add ability to change number of Qs
+    7. Add more Qs
+*/
+
 document.addEventListener("DOMContentLoaded", function () {
     const numOfQuestions = 10;
     const numOfOptions = 4;
@@ -19,16 +30,16 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    let questionOne = new Question("QUESTION 1 TEXT", [new Option("1Option1",1), new Option("1Option2",0), new Option("1Option3",0), new Option("1Option4",0)]);
-    let questionTwo = new Question("QUESTION 2 TEXT", [new Option("2Option1",1), new Option("2Option2",0), new Option("2Option3",0), new Option("2Option4",0)]);
-    let questionThree = new Question("QUESTION 3 TEXT", [new Option("3Option1",1), new Option("3Option2",0), new Option("3Option3",0), new Option("3Option4",0)]);
-    let questionFour = new Question("QUESTION 4 TEXT", [new Option("4Option1",1), new Option("4Option2",0), new Option("4Option3",0), new Option("4Option4",0)]);
-    let questionFive = new Question("QUESTION 5 TEXT", [new Option("5Option1",1), new Option("5Option2",0), new Option("5Option3",0), new Option("5Option4",0)]);
-    let questionSix = new Question("QUESTION 6 TEXT", [new Option("6Option1",1), new Option("6Option2",0), new Option("6Option3",0), new Option("6Option4",0)]);
-    let questionSeven = new Question("QUESTION 7 TEXT", [new Option("7Option1",1), new Option("7Option2",0), new Option("7Option3",0), new Option("7Option4",0)]);
-    let questionEight = new Question("QUESTION 8 TEXT", [new Option("8Option1",1), new Option("8Option2",0), new Option("8Option3",0), new Option("8Option4",0)]);
-    let questionNine = new Question("QUESTION 9 TEXT", [new Option("9Option1",1), new Option("9Option2",0), new Option("9Option3",0), new Option("9Option4",0)]);
-    let questionTen = new Question("QUESTION 10 TEXT", [new Option("10Option1",1), new Option("10Option2",0), new Option("10Option3",0), new Option("10Option4",0)]);
+    let questionOne = new Question("What is the smallest prime number?", [new Option("1",0), new Option("2",1), new Option("3",0), new Option("5",0)]);
+    let questionTwo = new Question("Which mountain range is the longest in the world?", [new Option("Andes",1), new Option("Himalayas",0), new Option("Rockies",0), new Option("Alps",0)]);
+    let questionThree = new Question("In Greek mythology, who is the goddess of wisdom and warfare?", [new Option("Hera",0), new Option("Athena",1), new Option("Aphrodite",0), new Option("Demeter",0)]);
+    let questionFour = new Question("Which chemical element is a noble gas and commonly used in colorful neon signs?", [new Option("Helium",0), new Option("Neon",0), new Option("Argon",0), new Option("Krypton",1)]);
+    let questionFive = new Question("What is the largest desert in the world by area?", [new Option("Sahara Desert",0), new Option("Antarctic Desert",1), new Option("Arabian Desert",0), new Option("Gobi Desert",0)]);
+    let questionSix = new Question("Who is the author of the science fiction novel \"Neuromancer\"?", [new Option("Isaac Asimov",0), new Option("Arthur C. Clarke",0), new Option("William Gibson",1), new Option("Philip K. Dick",0)]);
+    let questionSeven = new Question("Which Renaissance artist sculpted the statue of David?", [new Option("Michelangelo",1), new Option("Leonardo da Vinci",0), new Option("Raphael",0), new Option("Donatello",0)]);
+    let questionEight = new Question("What is the main structural protein found in the skin, hair, and nails of animals?", [new Option("Collagen",0), new Option("Keratin",1), new Option("Elastin",0), new Option("Myosin",0)]);
+    let questionNine = new Question("Which ancient wonder was located in the city of Babylon?", [new Option("Hanging Gardens",1), new Option("Statue of Zeus at Olympia",0), new Option("Temple of Artemis at Ephesus",0), new Option("Mausoleum at Halicarnassus",0)]);
+    let questionTen = new Question("In computer programming, what does the acronym \"SQL\" stand for?", [new Option("Simple Query Language",0), new Option("Structured Question Language",0), new Option("Standard Query Language",1), new Option("Sequential Query Logic",0)]);
     
     // create an array to hold all possible questions
     let questions = new Array(numOfQuestions);
@@ -81,7 +92,7 @@ function generateQuestion(questionNumber, questions) {
 
     let question = questions[questionNumber];
     let questionElement = document.getElementById("question");
-    questionElement.innerText = question.questionText;
+    questionElement.innerText = `${questionNumber}. ` + question.questionText;
 
     let options = document.getElementsByClassName("options");
 
