@@ -118,7 +118,7 @@ function generateQuestion(questionNumber, questions) {
 function checkAnswer(questionNumber, questions) {
 
     // Check if there are any more questions and if the next question button hasn't already been created
-    if (questionNumber < questions.length && document.getElementById("btn-nextQ") === null) {
+    if (questionNumber <= questions.length && document.getElementById("btn-nextQ") === null) {
         // get the selected option
         let options = document.getElementsByClassName("option");
         let selectedOpion;
