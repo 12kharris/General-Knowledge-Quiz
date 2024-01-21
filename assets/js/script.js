@@ -1,6 +1,6 @@
 // TO DO:
 /*
-    1. Make it so can only submit Q once
+    1. Make it so can only submit Q once **********
     2. Add feedback for which was correct answer
     3. deselect last selected radio button
     4. STYLE PAGE!
@@ -95,13 +95,20 @@ function generateQuestion(questionNumber, questions) {
     questionElement.innerText = `${questionNumber}. ` + question.questionText;
 
     let options = document.getElementsByClassName("options");
+    for (let option of options) {
+        option.classList.remove("answer-grey");
+        option.classList.remove("answer-red");
+        option.classList.remove("answer-green");
+    }
 
     // Loop through the different options, set the text of their labels and whether they are correct
     for (let i = 0; i < options.length; i++) {
         let optionText = options[i].getElementsByTagName("label")[0];
-        let optionCorrect = options[i].getElementsByClassName("option")[0];
+        let option = options[i].getElementsByClassName("option")[0];
         optionText.innerText = question.AnswerOptions[i].option;
-        optionCorrect.setAttribute("data-type", question.AnswerOptions[i].correct);
+        option.setAttribute("data-type", question.AnswerOptions[i].correct);
+        option.disabled = false;
+        option.checked = false;
     }
 }
 
@@ -110,30 +117,52 @@ function generateQuestion(questionNumber, questions) {
  */
 function checkAnswer(questionNumber, questions) {
 
-    // get the selected option
-    let options = document.getElementsByClassName("option");
-    let selectedOption;
-    for (let option of options) {
-        if (option.checked) {
-            selectedOption = option;
-        }
-    }
-
-    if (selectedOption.getAttribute("data-type") === "1") {
-        let scoreHolder = document.getElementById("score");
-        let score = scoreHolder.innerText;
-        scoreHolder.innerText = ++score;
-    }
-    else {
-        let incorrectHolder = document.getElementById("incorrect-count");
-        let count = incorrectHolder.innerText;
-        incorrectHolder.innerText = ++count;
-    }
-
-    //console.log(`Correct? ${}`);
-
     // Check if there are any more questions and if the next question button hasn't already been created
     if (questionNumber < questions.length && document.getElementById("btn-nextQ") === null) {
+        // get the selected option
+        let options = document.getElementsByClassName("option");
+        let selectedOption;
+        for (let option of options) {
+            if (option.checked) {
+                selectedOption = option;
+            }
+            option.disabled = true;
+        }
+
+        if (selectedOption.getAttribute("data-type") === "1") {
+            let scoreHolder = document.getElementById("score");
+            let score = scoreHolder.innerText;
+            scoreHolder.innerText = ++score;
+
+            // Grey out other options and highlight in green the correct answer. Make the radio buttons not selectable
+            for (let option of options) {
+                let holder = option.parentNode;
+                if (option.getAttribute("data-type") === "1") {
+                    holder.classList.add("answer-green");
+                }
+                else {
+                    holder.classList.add("answer-grey");
+                }
+            }
+        }
+        else {
+            let incorrectHolder = document.getElementById("incorrect-count");
+            let count = incorrectHolder.innerText;
+            incorrectHolder.innerText = ++count;
+
+            for (let option of options) {
+                let holder = option.parentNode;
+                if (option.getAttribute("data-type") === "1") {
+                    holder.classList.add("answer-green");
+                }
+                else if (option.checked){
+                    holder.classList.add("answer-red");
+                }
+                else {
+                    holder.classList.add("answer-grey");
+                }
+            }
+        }
         createNextQuestionButton(questionNumber, questions);
     }
 }
