@@ -121,48 +121,43 @@ function checkAnswer(questionNumber, questions) {
     if (questionNumber < questions.length && document.getElementById("btn-nextQ") === null) {
         // get the selected option
         let options = document.getElementsByClassName("option");
-        let selectedOption;
+        let selectedOpion;
+
         for (let option of options) {
             if (option.checked) {
-                selectedOption = option;
+                selectedOpion = option;
+            }
+        }
+
+        if (selectedOpion === undefined) {
+            return;
+        }
+
+        for (let option of options) {
+            let holder = option.parentNode;
+
+            if (option.getAttribute("data-type") === "1") {
+                if (option.checked) {
+                    let scoreHolder = document.getElementById("score");
+                    let score = scoreHolder.innerText;
+                    scoreHolder.innerText = ++score;
+                }
+                
+                holder.classList.add("answer-green");
+            }
+            else if (option.getAttribute("data-type") === "0" && option.checked) {
+                holder.classList.add("answer-red");
+
+                let incorrectHolder = document.getElementById("incorrect-count");
+                let count = incorrectHolder.innerText;
+                incorrectHolder.innerText = ++count;
+            }
+            else {
+                holder.classList.add("answer-grey");
             }
             option.disabled = true;
         }
 
-        if (selectedOption.getAttribute("data-type") === "1") {
-            let scoreHolder = document.getElementById("score");
-            let score = scoreHolder.innerText;
-            scoreHolder.innerText = ++score;
-
-            // Grey out other options and highlight in green the correct answer. Make the radio buttons not selectable
-            for (let option of options) {
-                let holder = option.parentNode;
-                if (option.getAttribute("data-type") === "1") {
-                    holder.classList.add("answer-green");
-                }
-                else {
-                    holder.classList.add("answer-grey");
-                }
-            }
-        }
-        else {
-            let incorrectHolder = document.getElementById("incorrect-count");
-            let count = incorrectHolder.innerText;
-            incorrectHolder.innerText = ++count;
-
-            for (let option of options) {
-                let holder = option.parentNode;
-                if (option.getAttribute("data-type") === "1") {
-                    holder.classList.add("answer-green");
-                }
-                else if (option.checked){
-                    holder.classList.add("answer-red");
-                }
-                else {
-                    holder.classList.add("answer-grey");
-                }
-            }
-        }
         createNextQuestionButton(questionNumber, questions);
     }
 }

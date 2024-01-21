@@ -1,16 +1,23 @@
 
 
 
-
+.options {
+    border-width: 3px;
+    border-style: solid;
+    border-color: black;
+}
 
 .answer-grey {
     color: grey;
+    border-color: grey;
 }
 
 .answer-green {
     color: green;
+    border-color: green;
 }
 
 .answer-red {
     color: red;
+    border-color: red;
 }
