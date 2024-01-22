@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Array to hold order of questions
     let questionPositions = new Array(numOfQuestions);
     // Generate random positions for questions which must be unique
+    // There is a possibility for an infinite loop but the chances are practically 0
     for (let i = 0; i < numOfQuestions; i++) {
         let rand;
         do {

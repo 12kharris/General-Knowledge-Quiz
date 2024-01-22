@@ -1,10 +1,35 @@
+body {
+    text-align: center;
+}
 
 
+#answers-holder {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
 
+
+/* Option box styles */
 .options {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     border-width: 3px;
     border-style: solid;
     border-color: black;
+    min-width: 200px;
+    max-width: 1000px;
+    width: 35%;
+    min-height: 100px;
+    max-height: 200px;
+    height: 30%;
+    margin: 10px;
+    text-align: center;
 }
 
 .answer-grey {
@@ -20,4 +45,15 @@
 .answer-red {
     color: red;
     border-color: red;
+}
+
+#score-holder {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#score-holder > p {
+    padding: 10px 30px;
 }
