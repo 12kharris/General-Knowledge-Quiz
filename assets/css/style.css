@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Nanum+Gothic&family=Oswald:wght@200;300;400;500;600;700&family=Poppins&display=swap');
 
+* {
+    margin: 5px;
+}
+
 body {
     text-align: center;
     font-family: 'Poppins', sans-serif;
@@ -7,7 +11,7 @@ body {
 
 #question {
     font-size: 30px;
-    padding: 35px 5px;
+    padding: 15px 5px;
     font-weight: normal;
 }
 
@@ -20,7 +24,7 @@ body {
     flex-wrap: wrap;
     flex-grow: 1;
     background-color: lightslategray;
-    padding: 5% 2%;
+    padding: 30px 0px;
 }
 
 .option {
@@ -124,12 +128,14 @@ body {
     color: green;
     border-color: green;
     background-color: white;
+    font-weight: bold;
 }
 
 .answer-red {
     color: red;
     border-color: red;
     background-color: white;
+    font-weight: bold;
 }
 
 #score-holder {
@@ -160,11 +166,17 @@ body {
     font-size: 20px;
     font-weight: bold;
     border-color: black;
-    margin: 15px;
+    margin: 7px;
 }
 
 #submit-button {
     background-color: rgb(4, 196, 4);
+}
+
+#submit-button:disabled {
+    background-color: white;
+    color: lightgray;
+    border-color: grey;
 }
 
 #nextQ-button {

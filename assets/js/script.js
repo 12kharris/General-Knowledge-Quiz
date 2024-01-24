@@ -1,15 +1,8 @@
 // TO DO:
 /*
-    1. Make it so can only submit Q once **********
-    2. Add feedback for which was correct answer ******
-    3. deselect last selected radio button *******
-    4. STYLE PAGE!
-    5. Add ability to retry
-    6. Add ability to change number of Qs
-    7. Add more Qs
-    8. Append next Q button to a div containing the submit button so it appears next to each other
-    9. Can maybe disable submit button after being clicked rather than how it currently functions
-    10. Remove radio buttons. Make divs buttons for answers? Can make the div have a click event?
+    5. Add ability to retry - HIGH PRIORITY
+    6. Add ability to change number of Qs - LOW PRIORITY
+    7. Add more Qs - LOW PRIORITY
 */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -91,21 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 option.classList.remove(`${id}-checked`);
             }
             // add the checked style to the clicked option
-            switch (holder.id) {
-                case "option1-box":
-                    holder.classList.add("option1-box-checked");
-                    break;
-                case "option2-box":
-                    holder.classList.add("option2-box-checked");
-                    break;
-                case "option3-box":
-                    holder.classList.add("option3-box-checked");
-                    break;
-                case "option4-box":
-                    holder.classList.add("option4-box-checked");
-                    break;
-            }
-            
+            holder.classList.add(`${holder.id}-checked`);
         });
     }
 
@@ -125,16 +104,19 @@ function generateQuestion(questionNumber, questions) {
         nextQuestionButton.remove();
     }
 
+    // re-enable the submit button
+    document.getElementById("submit-button").disabled = false;
+
     let question = questions[questionNumber];
     let questionElement = document.getElementById("question");
     questionElement.innerText = `${questionNumber}. ` + question.questionText;
 
+    // remove answer feedback styles
     let options = document.getElementsByClassName("options");
     for (let option of options) {
         option.classList.remove("answer-grey");
         option.classList.remove("answer-red");
         option.classList.remove("answer-green");
-        option.classList.remove(`${option.id}-checked`);
     }
 
     // Loop through the different options, set the text of their labels and whether they are correct
@@ -165,13 +147,17 @@ function checkAnswer(questionNumber, questions) {
             }
         }
 
+        // if submit is pressed but no option selected, return
         if (selectedOpion === undefined) {
             return;
         }
 
+        document.getElementById("submit-button").disabled = true;
+
+        // loop through the possible options and provide colour feedback for selected answer. If correct increment score
         for (let option of options) {
             let holder = option.parentNode;
-            //holder.classList.remove(`${holder.id}-checked`)
+            holder.classList.remove(`${holder.id}-checked`);
 
             if (option.getAttribute("data-type") === "1") {
                 if (option.checked) {
@@ -195,10 +181,14 @@ function checkAnswer(questionNumber, questions) {
             option.disabled = true;
         }
 
+        // could add condition here to either generate next Q or give a total?
         createNextQuestionButton(questionNumber, questions);
     }
 }
 
+/**
+ * Function which creates the button to move onto the next question
+ */
 function createNextQuestionButton(questionNumber, questions) {
     let holder = document.getElementById("main-buttons-holder");
     let nextQuestionButton = document.createElement("button");
