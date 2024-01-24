@@ -1,6 +1,7 @@
 // TO DO:
 /*
-    5. Add ability to retry - HIGH PRIORITY
+    4. Add images and knowledge for feedback - HIGH PRIORITY 
+    5. Add ability to retry and start page - HIGH PRIORITY
     6. Add ability to change number of Qs - LOW PRIORITY
     7. Add more Qs - LOW PRIORITY
 */
@@ -10,12 +11,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const numOfOptions = 4;
 
     class Question {
-        constructor(questionText, options) {
+        constructor(questionText, options/*, infoText, infoImage*/) {
             this.questionText = questionText,
             this.AnswerOptions = new Array(numOfOptions);
             for (let i = 0; i < numOfOptions; i++) {
                 this.AnswerOptions[i] = {option: options[i].optionText, correct: options[i].correct}
             }
+            /*this.infoText = infoText;
+            this.infoImage = infoImage;*/
         }
     }
 
@@ -26,16 +29,56 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    let questionOne = new Question("What is the smallest prime number?", [new Option("1",0), new Option("2",1), new Option("3",0), new Option("5",0)]);
-    let questionTwo = new Question("Which mountain range is the longest in the world?", [new Option("Andes",1), new Option("Himalayas",0), new Option("Rockies",0), new Option("Alps",0)]);
-    let questionThree = new Question("In Greek mythology, who is the goddess of wisdom and warfare?", [new Option("Hera",0), new Option("Athena",1), new Option("Aphrodite",0), new Option("Demeter",0)]);
-    let questionFour = new Question("Which chemical element is a noble gas and commonly used in colorful neon signs?", [new Option("Helium",0), new Option("Neon",0), new Option("Argon",0), new Option("Krypton",1)]);
-    let questionFive = new Question("What is the largest desert in the world by area?", [new Option("Sahara Desert",0), new Option("Antarctic Desert",1), new Option("Arabian Desert",0), new Option("Gobi Desert",0)]);
-    let questionSix = new Question("Who is the author of the science fiction novel \"Neuromancer\"?", [new Option("Isaac Asimov",0), new Option("Arthur C. Clarke",0), new Option("William Gibson",1), new Option("Philip K. Dick",0)]);
-    let questionSeven = new Question("Which Renaissance artist sculpted the statue of David?", [new Option("Michelangelo",1), new Option("Leonardo da Vinci",0), new Option("Raphael",0), new Option("Donatello",0)]);
-    let questionEight = new Question("What is the main structural protein found in the skin, hair, and nails of animals?", [new Option("Collagen",0), new Option("Keratin",1), new Option("Elastin",0), new Option("Myosin",0)]);
-    let questionNine = new Question("Which ancient wonder was located in the city of Babylon?", [new Option("Hanging Gardens",1), new Option("Statue of Zeus at Olympia",0), new Option("Temple of Artemis at Ephesus",0), new Option("Mausoleum at Halicarnassus",0)]);
-    let questionTen = new Question("In computer programming, what does the acronym \"SQL\" stand for?", [new Option("Simple Query Language",0), new Option("Structured Question Language",0), new Option("Standard Query Language",1), new Option("Sequential Query Logic",0)]);
+    let questionOne = new Question("What is the smallest prime number?" 
+                                    ,[new Option("1",0), new Option("2",1), new Option("3",0), new Option("5",0)]
+                                    /*,"INFO 1 TEXT"
+                                    ,"Q1 SRC"*/
+                                );
+    let questionTwo = new Question("Which mountain range is the longest in the world?"
+                                    ,[new Option("Andes",1), new Option("Himalayas",0), new Option("Rockies",0), new Option("Alps",0)]
+                                    /*,"INFO 1 TEXT"
+                                    ,"Q1 SRC"*/
+                                );
+    let questionThree = new Question("In Greek mythology, who is the goddess of wisdom and warfare?"
+                                    ,[new Option("Hera",0), new Option("Athena",1), new Option("Aphrodite",0), new Option("Demeter",0)]
+                                    /*,"INFO 1 TEXT"
+                                    ,"Q1 SRC"*/
+                                );
+    let questionFour = new Question("Which chemical element is a noble gas and commonly used in colorful neon signs?"
+                                    ,[new Option("Helium",0), new Option("Neon",0), new Option("Argon",0), new Option("Krypton",1)]
+                                    /*,"INFO 1 TEXT"
+                                    ,"Q1 SRC"*/
+                                );
+    let questionFive = new Question("What is the largest desert in the world by area?"
+                                    ,[new Option("Sahara Desert",0), new Option("Antarctic Desert",1), new Option("Arabian Desert",0), new Option("Gobi Desert",0)]
+                                    /*,"INFO 1 TEXT"
+                                    ,"Q1 SRC"*/
+                                );
+    let questionSix = new Question("Who is the author of the science fiction novel \"Neuromancer\"?"
+                                    ,[new Option("Isaac Asimov",0), new Option("Arthur C. Clarke",0), new Option("William Gibson",1), new Option("Philip K. Dick",0)]
+                                    /*,"INFO 1 TEXT"
+                                    ,"Q1 SRC"*/
+                                );
+    let questionSeven = new Question("Which Renaissance artist sculpted the statue of David?"
+                                    ,[new Option("Michelangelo",1), new Option("Leonardo da Vinci",0), new Option("Raphael",0), new Option("Donatello",0)]
+                                    /*,"INFO 1 TEXT"
+                                    ,"Q1 SRC"*/
+                                );
+    let questionEight = new Question("What is the main structural protein found in the skin, hair, and nails of animals?"
+                                    ,[new Option("Collagen",0), new Option("Keratin",1), new Option("Elastin",0), new Option("Myosin",0)]
+                                    /*,"INFO 1 TEXT"
+                                    ,"Q1 SRC"*/
+                                );
+    let questionNine = new Question("Which ancient wonder was located in the city of Babylon?"
+                                    ,[new Option("Hanging Gardens",1), new Option("Statue of Zeus at Olympia",0), new Option("Temple of Artemis at Ephesus",0), new Option("Mausoleum at Halicarnassus",0)]
+                                    /*,"INFO 1 TEXT"
+                                    ,"Q1 SRC"*/
+                                );
+    let questionTen = new Question("In computer programming, what does the acronym \"SQL\" stand for?"
+                                    ,[new Option("Simple Query Language",0), new Option("Structured Question Language",0), new Option("Standard Query Language",1), new Option("Sequential Query Logic",0)]
+                                    /*,"INFO 1 TEXT"
+                                    ,"Q1 SRC"*/
+                                );
     
     // create an array to hold all possible questions
     let questions = new Array(numOfQuestions);
@@ -75,16 +118,19 @@ document.addEventListener("DOMContentLoaded", function () {
     for (let holder of optionHolders)
     {
         holder.addEventListener("click", function() {
-            holder.getElementsByClassName("option")[0].checked = true;
-            let options = document.getElementsByClassName("options");
+            // if the options are in the feedback state, do not add style when clicked
+            if (!holder.classList.contains("answer-grey", "answer-red", "answer-green")) {
+                holder.getElementsByClassName("option")[0].checked = true;
+                let options = document.getElementsByClassName("options");
 
-            // remove style class for any options which have the checked style
-            for (let option of options) {
-                let id = option.id;
-                option.classList.remove(`${id}-checked`);
+                // remove style class for any options which have the checked style
+                for (let option of options) {
+                    let id = option.id;
+                    option.classList.remove(`${id}-checked`);
+                }
+                // add the checked style to the clicked option
+                holder.classList.add(`${holder.id}-checked`);
             }
-            // add the checked style to the clicked option
-            holder.classList.add(`${holder.id}-checked`);
         });
     }
 
@@ -134,7 +180,6 @@ function generateQuestion(questionNumber, questions) {
  * Function to check if answer is correct or not and increment question number and score
  */
 function checkAnswer(questionNumber, questions) {
-
     // Check if there are any more questions and if the next question button hasn't already been created
     if (questionNumber <= questions.length && document.getElementById("nextQ-button") === null) {
         // get the selected option
