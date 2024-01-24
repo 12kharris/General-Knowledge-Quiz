@@ -1,5 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Nanum+Gothic&family=Oswald:wght@200;300;400;500;600;700&family=Poppins&display=swap');
+
 body {
     text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+#question {
+    font-size: 30px;
+    padding: 35px 5px;
+    font-weight: normal;
 }
 
 
@@ -10,6 +19,8 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     flex-grow: 1;
+    background-color: lightslategray;
+    padding: 5% 2%;
 }
 
 
@@ -19,7 +30,7 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    border-width: 3px;
+    border-width: 8px;
     border-style: solid;
     border-color: black;
     min-width: 200px;
@@ -30,6 +41,41 @@ body {
     height: 30%;
     margin: 10px;
     text-align: center;
+    background-color: white;
+    margin: 10px 40px;
+    font-size: 20px;
+}
+
+#option1-box {
+    border-color: blue;
+}
+
+#option1-box:hover {
+    color: blue;
+}
+
+#option2-box {
+    border-color: rgb(255, 255, 0);
+}
+
+#option2-box:hover {
+    color: rgb(255, 255, 0);
+}
+
+#option3-box {
+    border-color: orangered;
+}
+
+#option3-box:hover {
+    color: orangered;
+}
+
+#option4-box {
+    border-color: magenta;
+}
+
+#option4-box:hover {
+    color: magenta;
 }
 
 .answer-grey {
@@ -52,8 +98,66 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    font-weight: bold;
 }
 
 #score-holder > p {
-    padding: 10px 30px;
+    padding: 10px 20px;
+    margin: 0px 5px;
+}
+
+#main-buttons-holder {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-buttons {
+    min-width: 100px;
+    max-width: 200px;
+    height: 70px;
+    width: 50%;
+    font-size: 20px;
+    font-weight: bold;
+    border-color: black;
+    margin: 15px;
+}
+
+#submit-button {
+    background-color: rgb(4, 196, 4);
+}
+
+#nextQ-button {
+    background-color: blue;
+    color: white;
+}
+
+
+
+#score {
+    color: green;
+}
+
+#incorrect-count {
+    color: red;
+}
+
+@media screen and (min-width: 425px) {
+    .options {
+        width: 35%;
+        height: 30%;
+        margin: 10px;
+        font-size: 30px;
+    }
+
+    #score-holder {
+        font-size: 20px;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    #question {
+        font-size: 35px;
+    }
 }

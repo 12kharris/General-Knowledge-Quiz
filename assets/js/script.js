@@ -1,12 +1,15 @@
 // TO DO:
 /*
     1. Make it so can only submit Q once **********
-    2. Add feedback for which was correct answer
-    3. deselect last selected radio button
+    2. Add feedback for which was correct answer ******
+    3. deselect last selected radio button *******
     4. STYLE PAGE!
     5. Add ability to retry
     6. Add ability to change number of Qs
     7. Add more Qs
+    8. Append next Q button to a div containing the submit button so it appears next to each other
+    9. Can maybe disable submit button after being clicked rather than how it currently functions
+    10. Remove radio buttons. Make divs buttons for answers? Can make the div have a click event?
 */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -86,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function generateQuestion(questionNumber, questions) {
 
     // If the next question button has been created, remove it
-    let nextQuestionButton = document.getElementById("btn-nextQ");
+    let nextQuestionButton = document.getElementById("nextQ-button");
     if (nextQuestionButton !== null) {
         nextQuestionButton.remove();
     }
@@ -119,7 +122,7 @@ function generateQuestion(questionNumber, questions) {
 function checkAnswer(questionNumber, questions) {
 
     // Check if there are any more questions and if the next question button hasn't already been created
-    if (questionNumber <= questions.length && document.getElementById("btn-nextQ") === null) {
+    if (questionNumber <= questions.length && document.getElementById("nextQ-button") === null) {
         // get the selected option
         let options = document.getElementsByClassName("option");
         let selectedOpion;
@@ -164,11 +167,12 @@ function checkAnswer(questionNumber, questions) {
 }
 
 function createNextQuestionButton(questionNumber, questions) {
-    let body = document.body;
+    let holder = document.getElementById("main-buttons-holder");
     let nextQuestionButton = document.createElement("button");
-    nextQuestionButton.id = "btn-nextQ";
+    nextQuestionButton.id = "nextQ-button";
+    nextQuestionButton.classList.add("main-buttons");
     nextQuestionButton.innerText = "Next Question";
-    body.appendChild(nextQuestionButton);
+    holder.appendChild(nextQuestionButton);
     nextQuestionButton.addEventListener("click", function () {
         generateQuestion(questionNumber, questions);
     });
