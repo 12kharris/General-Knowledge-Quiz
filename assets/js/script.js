@@ -78,6 +78,37 @@ document.addEventListener("DOMContentLoaded", function () {
         checkAnswer(++questionNumber, questions);
     });
 
+    let optionHolders = document.getElementsByClassName("options");
+    for (let holder of optionHolders)
+    {
+        holder.addEventListener("click", function() {
+            holder.getElementsByClassName("option")[0].checked = true;
+            let options = document.getElementsByClassName("options");
+
+            // remove style class for any options which have the checked style
+            for (let option of options) {
+                let id = option.id;
+                option.classList.remove(`${id}-checked`);
+            }
+            // add the checked style to the clicked option
+            switch (holder.id) {
+                case "option1-box":
+                    holder.classList.add("option1-box-checked");
+                    break;
+                case "option2-box":
+                    holder.classList.add("option2-box-checked");
+                    break;
+                case "option3-box":
+                    holder.classList.add("option3-box-checked");
+                    break;
+                case "option4-box":
+                    holder.classList.add("option4-box-checked");
+                    break;
+            }
+            
+        });
+    }
+
     generateQuestion(questionNumber, questions);
 });
 
@@ -103,6 +134,7 @@ function generateQuestion(questionNumber, questions) {
         option.classList.remove("answer-grey");
         option.classList.remove("answer-red");
         option.classList.remove("answer-green");
+        option.classList.remove(`${option.id}-checked`);
     }
 
     // Loop through the different options, set the text of their labels and whether they are correct
@@ -139,6 +171,7 @@ function checkAnswer(questionNumber, questions) {
 
         for (let option of options) {
             let holder = option.parentNode;
+            //holder.classList.remove(`${holder.id}-checked`)
 
             if (option.getAttribute("data-type") === "1") {
                 if (option.checked) {

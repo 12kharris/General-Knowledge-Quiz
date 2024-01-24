@@ -23,6 +23,10 @@ body {
     padding: 5% 2%;
 }
 
+.option {
+    display: none;
+}
+
 
 /* Option box styles */
 .options {
@@ -46,51 +50,86 @@ body {
     font-size: 20px;
 }
 
+/* credit to https://stackoverflow.com/questions/26754497/css-disable-hover-effect for all hover style logic*/
 #option1-box {
-    border-color: blue;
-}
-
-#option1-box:hover {
-    color: blue;
+    &:not(.answer-green, .answer-grey, .answer-red) {
+        border-color: blue;
+    } 
+    &:not(.option1-box-checked):hover {
+        color: blue;
+    }
 }
 
 #option2-box {
-    border-color: rgb(255, 255, 0);
-}
-
-#option2-box:hover {
-    color: rgb(255, 255, 0);
+    &:not(.answer-green, .answer-grey, .answer-red) {
+        border-color: rgb(255, 255, 0);
+    } 
+    &:not(.option2-box-checked):hover {
+        color: rgb(255, 255, 0);
+    }
 }
 
 #option3-box {
-    border-color: orangered;
-}
-
-#option3-box:hover {
-    color: orangered;
+    &:not(.answer-green, .answer-grey, .answer-red) {
+        border-color: orangered;
+    }
+    &:not(.option3-box-checked):hover {
+        color: orangered;
+    }
 }
 
 #option4-box {
-    border-color: magenta;
+    &:not(.answer-green, .answer-grey, .answer-red) {
+        border-color: magenta;
+    }
+    &:not(.option4-box-checked):hover {
+        color: magenta;
+    }
 }
 
-#option4-box:hover {
-    color: magenta;
+.option1-box-checked {
+    &:not(.answer-green, .answer-grey, .answer-red) {
+        background-color: blue;
+        color: white;
+        font-weight: bold;
+    }
 }
+
+.option2-box-checked {
+    background-color: rgb(255, 255, 0);
+    color: black;
+    font-weight: bold;
+}
+
+.option3-box-checked {
+    background-color: orangered;
+    color: white;
+    font-weight: bold;
+}
+
+.option4-box-checked {
+    background-color: magenta;
+    color: white;
+    font-weight: bold;
+}
+
 
 .answer-grey {
     color: grey;
     border-color: grey;
+    background-color: white;
 }
 
 .answer-green {
     color: green;
     border-color: green;
+    background-color: white;
 }
 
 .answer-red {
     color: red;
     border-color: red;
+    background-color: white;
 }
 
 #score-holder {
