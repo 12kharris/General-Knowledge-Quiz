@@ -1,24 +1,20 @@
-// TO DO:
-/*
-    4. Add images and knowledge for feedback - HIGH PRIORITY 
-    5. Add ability to retry and start page - HIGH PRIORITY
-    6. Add ability to change number of Qs - LOW PRIORITY
-    7. Add more Qs - LOW PRIORITY
-*/
 
 document.addEventListener("DOMContentLoaded", function () {
     const numOfQuestions = 10;
     const numOfOptions = 4;
 
     class Question {
-        constructor(questionText, options/*, infoText, infoImage*/) {
+        constructor(questionText, options, infoText, infoImage, infoImageAlt, sourceLink, sourceAriaLabel) {
             this.questionText = questionText,
             this.AnswerOptions = new Array(numOfOptions);
             for (let i = 0; i < numOfOptions; i++) {
                 this.AnswerOptions[i] = {option: options[i].optionText, correct: options[i].correct}
             }
-            /*this.infoText = infoText;
-            this.infoImage = infoImage;*/
+            this.infoText = infoText;
+            this.infoImage = infoImage;
+            this.infoImageAlt = infoImageAlt;
+            this.sourceLink = sourceLink;
+            this.sourceAriaLabel = sourceAriaLabel;
         }
     }
 
@@ -31,53 +27,83 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let questionOne = new Question("What is the smallest prime number?" 
                                     ,[new Option("1",0), new Option("2",1), new Option("3",0), new Option("5",0)]
-                                    /*,"INFO 1 TEXT"
-                                    ,"Q1 SRC"*/
+                                    ,"A prime number (or prime) is a natural number greater than 1 that has no positive divisors other than 1 and itself. As such, 2 is the smallest prime number"
+                                    ,"assets/images/prime-numbers.webp"
+                                    ,"Image of prime numbers"
+                                    ,"https://en.wikipedia.org/wiki/List_of_prime_numbers"
+                                    ,"Navigate to Wikipedia prime numbers (opens in new tab)"
                                 );
     let questionTwo = new Question("Which mountain range is the longest in the world?"
                                     ,[new Option("Andes",1), new Option("Himalayas",0), new Option("Rockies",0), new Option("Alps",0)]
-                                    /*,"INFO 1 TEXT"
-                                    ,"Q1 SRC"*/
+                                    ,"The world's longest above-water mountain range is the Andes, about 7,000 km (4,300 mi) long. The range stretches from north to south through seven countries in South America, along the west coast of the continent: Venezuela, Colombia, Ecuador, Peru, Bolivia, Chile, and Argentina."
+                                    ,"assets/images/andes.webp"
+                                    ,"Image of Andes mountain range"
+                                    ,"https://en.wikipedia.org/wiki/List_of_longest_mountain_chains_on_Earth#:~:text=The%20world's%20longest%20above%2Dwater,Bolivia%2C%20Chile%2C%20and%20Argentina."
+                                    ,"Navigate to Wikipedia longest mountain ranges (opens in new tab)"
                                 );
     let questionThree = new Question("In Greek mythology, who is the goddess of wisdom and warfare?"
                                     ,[new Option("Hera",0), new Option("Athena",1), new Option("Aphrodite",0), new Option("Demeter",0)]
-                                    /*,"INFO 1 TEXT"
-                                    ,"Q1 SRC"*/
+                                    ,"Athena or Athene, often given the epithet Pallas, is an ancient Greek goddess associated with wisdom, warfare, and handicraft who was later syncretized with the Roman goddess Minerva. Athena was regarded as the patron and protectress of various cities across Greece, particularly the city of Athens, from which she most likely received her name. The Parthenon on the Acropolis of Athens is dedicated to her."
+                                    ,"assets/images/athena.webp"
+                                    ,"Image of Athena statue"
+                                    ,"https://en.wikipedia.org/wiki/Athena"
+                                    ,"Navigate to Wikipedia Athena (opens in new tab)"
                                 );
     let questionFour = new Question("Which chemical element is a noble gas and commonly used in colorful neon signs?"
                                     ,[new Option("Helium",0), new Option("Neon",0), new Option("Argon",0), new Option("Krypton",1)]
-                                    /*,"INFO 1 TEXT"
-                                    ,"Q1 SRC"*/
+                                    ,"Krypton is a chemical element; it has symbol Kr and atomic number 36. It is a colorless, odorless, tasteless noble gas that occurs in trace amounts in the atmosphere and is often used with other rare gases in fluorescent lamps"
+                                    ,"assets/images/Krypton_discharge_tube.webp"
+                                    ,"Image of krypton tube"
+                                    ,"https://en.wikipedia.org/wiki/Krypton"
+                                    ,"Navigate to Wikipedia krypton (opens in new tab)"
                                 );
     let questionFive = new Question("What is the largest desert in the world by area?"
                                     ,[new Option("Sahara Desert",0), new Option("Antarctic Desert",1), new Option("Arabian Desert",0), new Option("Gobi Desert",0)]
-                                    /*,"INFO 1 TEXT"
-                                    ,"Q1 SRC"*/
+                                    ,"Antarctica is, on average, the coldest, driest, and windiest of the continents, and it has the highest average elevation. It is mainly a polar desert, with annual precipitation of over 200 mm (8 in) along the coast and far less inland"
+                                    ,"assets/images/antarctica.webp"
+                                    ,"Image of Antarctica"
+                                    ,"https://en.wikipedia.org/wiki/Antarctica"
+                                    ,"Navigate to Wikipedia Antarctica (opens in new tab)"
                                 );
     let questionSix = new Question("Who is the author of the science fiction novel \"Neuromancer\"?"
                                     ,[new Option("Isaac Asimov",0), new Option("Arthur C. Clarke",0), new Option("William Gibson",1), new Option("Philip K. Dick",0)]
-                                    /*,"INFO 1 TEXT"
-                                    ,"Q1 SRC"*/
+                                    ,"Neuromancer is a 1984 science fiction novel by American-Canadian writer William Gibson and it is considered to be one of the earliest and best-known works in the cyberpunk genre. Set in the future, the novel follows Henry Case, a washed-up hacker hired for one last job, which brings him in contact with a powerful artificial intelligence."
+                                    ,"assets/images/neuromancer.webp"
+                                    ,"Image of Neuromancer cover"
+                                    ,"https://en.wikipedia.org/wiki/Neuromancer"
+                                    ,"Navigate to Wikipedia Neuromancer (opens in new tab)"
                                 );
-    let questionSeven = new Question("Which Renaissance artist sculpted the statue of David?"
-                                    ,[new Option("Michelangelo",1), new Option("Leonardo da Vinci",0), new Option("Raphael",0), new Option("Donatello",0)]
-                                    /*,"INFO 1 TEXT"
-                                    ,"Q1 SRC"*/
+    let questionSeven = new Question("What is the 5th farthest planet from the sun?"
+                                    ,[new Option("Jupiter",1), new Option("Mars",0), new Option("Earth",0), new Option("Saturn",0)]
+                                    ,"Jupiter is the fifth planet from the Sun and the largest in the Solar System. It is a gas giant with a mass more than two and a half times that of all the other planets in the Solar System combined, and slightly less than one one-thousandth the mass of the Sun. Jupiter has an orbital period of 11.86 years."
+                                    ,"assets/images/jupiter.webp"
+                                    ,"Image of Jupiter"
+                                    ,"https://en.wikipedia.org/wiki/Jupiter"
+                                    ,"Navigate to Wikipedia Jupiter (opens in new tab)"
                                 );
     let questionEight = new Question("What is the main structural protein found in the skin, hair, and nails of animals?"
                                     ,[new Option("Collagen",0), new Option("Keratin",1), new Option("Elastin",0), new Option("Myosin",0)]
-                                    /*,"INFO 1 TEXT"
-                                    ,"Q1 SRC"*/
+                                    ,"Keratin is one of a family of structural fibrous proteins. It is the key structural material making up scales, hair, nails, feathers, horns, claws, hooves, and the outer layer of skin among vertebrates."
+                                    ,"assets/images/keratin.webp"
+                                    ,"Image of keratin protein"
+                                    ,"https://en.wikipedia.org/wiki/Keratin"
+                                    ,"Navigate to Wikipedia Keratin (opens in new tab)"
                                 );
     let questionNine = new Question("Which ancient wonder was located in the city of Babylon?"
                                     ,[new Option("Hanging Gardens",1), new Option("Statue of Zeus at Olympia",0), new Option("Temple of Artemis at Ephesus",0), new Option("Mausoleum at Halicarnassus",0)]
-                                    /*,"INFO 1 TEXT"
-                                    ,"Q1 SRC"*/
+                                    ,"The Hanging Gardens of Babylon were one of the Seven Wonders of the Ancient World listed by Hellenic culture. They were described as a remarkable feat of engineering with an ascending series of tiered gardens containing a wide variety of trees, shrubs, and vines, resembling a large green mountain constructed of mud bricks."
+                                    ,"assets/images/hanging gardens.webp"
+                                    ,"Image of painting of Hanging Gardens"
+                                    ,"https://en.wikipedia.org/wiki/Hanging_Gardens_of_Babylon"
+                                    ,"Navigate to Wikipedia Hanging gardens (opens in new tab)"
                                 );
     let questionTen = new Question("In computer programming, what does the acronym \"SQL\" stand for?"
-                                    ,[new Option("Simple Query Language",0), new Option("Structured Question Language",0), new Option("Standard Query Language",1), new Option("Sequential Query Logic",0)]
-                                    /*,"INFO 1 TEXT"
-                                    ,"Q1 SRC"*/
+                                    ,[new Option("Simple Query Language",0), new Option("Structured Query Language",1), new Option("Standard Query Language",0), new Option("Sequential Query Language",0)]
+                                    ,"Structured Query Language (SQL) (sometimes pronounced \"sequel\" for historical reasons) is a domain-specific language used in programming and designed for managing data held in a relational database management system (RDBMS)"
+                                    ,"assets/images/SQL.webp"
+                                    ,"Image of SQL code"
+                                    ,"https://en.wikipedia.org/wiki/SQL"
+                                    ,"Navigate to Wikipedia Athena (opens in new tab)"
                                 );
     
     // create an array to hold all possible questions
@@ -121,6 +147,9 @@ document.addEventListener("DOMContentLoaded", function () {
             // if the options are in the feedback state, do not add style when clicked
             if (!holder.classList.contains("answer-grey", "answer-red", "answer-green")) {
                 holder.getElementsByClassName("option")[0].checked = true;
+
+                // re-enable the submit button when option is chosen
+                document.getElementById("submit-button").disabled = false;
                 let options = document.getElementsByClassName("options");
 
                 // remove style class for any options which have the checked style
@@ -133,6 +162,8 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
+    // hide the finished text
+    document.getElementById("finished").style.display = "none";
 
     generateQuestion(questionNumber, questions);
 });
@@ -140,18 +171,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 /**
- * Generates a question from the available questions and displays it on the page
+ * Generates a question from the available question pool and displays it on the page
  */
 function generateQuestion(questionNumber, questions) {
-
     // If the next question button has been created, remove it
     let nextQuestionButton = document.getElementById("nextQ-button");
     if (nextQuestionButton !== null) {
         nextQuestionButton.remove();
     }
 
-    // re-enable the submit button
-    document.getElementById("submit-button").disabled = false;
+    // Hide the info section for the answer and scroll message
+    document.getElementById("info-section").style.display = "none";
+    document.getElementById("scroll-message").style.display = "none";
+
+    // disable submit button until option is chosen
+    document.getElementById("submit-button").disabled = true;
 
     let question = questions[questionNumber];
     let questionElement = document.getElementById("question");
@@ -174,6 +208,18 @@ function generateQuestion(questionNumber, questions) {
         option.disabled = false;
         option.checked = false;
     }
+
+    // Ready content for answer info
+    let image = document.getElementById("question-image");
+    image.src = question.infoImage;
+    image.alt = question.infoImageAlt;
+
+    let infoText = document.getElementById("question-info");
+    infoText.innerText = question.infoText;
+
+    let source = document.getElementById("source-link");
+    source.href = question.sourceLink;
+    source.ariaLabel = question.sourceAriaLabel;
 }
 
 /**
@@ -227,7 +273,18 @@ function checkAnswer(questionNumber, questions) {
         }
 
         // could add condition here to either generate next Q or give a total?
-        createNextQuestionButton(questionNumber, questions);
+        if (questionNumber <= 10) {
+            createNextQuestionButton(questionNumber, questions);
+        }
+        else {
+            createFinishButton();
+        }
+        
+
+        // unhide the info section for the answer and the scroll message
+        document.getElementById("info-section").style.display = "";
+        document.getElementById("scroll-message").style.display = "";
+
     }
 }
 
@@ -244,4 +301,34 @@ function createNextQuestionButton(questionNumber, questions) {
     nextQuestionButton.addEventListener("click", function () {
         generateQuestion(questionNumber, questions);
     });
+}
+
+function createFinishButton() {
+    let holder = document.getElementById("main-buttons-holder");
+    let nextQuestionButton = document.createElement("button");
+    nextQuestionButton.id = "finish-button";
+    nextQuestionButton.classList.add("main-buttons");
+    nextQuestionButton.innerText = "Finish";
+    holder.appendChild(nextQuestionButton);
+    nextQuestionButton.addEventListener("click", function () {
+        let score = document.getElementById("score").innerText;
+        displayFinishPage(score);
+    });
+}
+
+function displayFinishPage(score) {
+    document.getElementById("finished").style.display = "";
+    document.getElementById("final-score").innerText = score;
+
+    // hide everything else
+    document.getElementById("question-holder").style.display = "none";
+    document.getElementById("button-section").style.display = "none";
+    document.getElementById("score-section").style.display = "none";
+    document.getElementById("info-section").style.display = "none";
+    
+    let options = document.getElementsByClassName("options");
+    for (let option of options) {
+        option.style.display = "none";
+    }
+
 }
