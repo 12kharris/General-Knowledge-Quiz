@@ -24,7 +24,7 @@ class Option {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-   
+    // create questions
     let questionOne = new Question("What is the smallest prime number?" 
                                     ,[new Option("1",0), new Option("2",1), new Option("3",0), new Option("5",0)]
                                     ,"A prime number (or prime) is a natural number greater than 1 that has no positive divisors other than 1 and itself. As such, 2 is the smallest prime number"
@@ -303,6 +303,9 @@ function createNextQuestionButton(questionNumber, questions) {
     });
 }
 
+/**
+ * Function to create the finish button which calls displayFinishPage()
+ */
 function createFinishButton() {
     let holder = document.getElementById("main-buttons-holder");
     let nextQuestionButton = document.createElement("button");
@@ -316,6 +319,9 @@ function createFinishButton() {
     });
 }
 
+/**
+ * Function to display the final finished page after all questions have been answered
+ */
 function displayFinishPage(score) {
     document.getElementById("finished").style.display = "";
     document.getElementById("final-score").innerText = score;
@@ -331,5 +337,4 @@ function displayFinishPage(score) {
     for (let option of options) {
         option.style.display = "none";
     }
-
 }
