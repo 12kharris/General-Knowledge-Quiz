@@ -1,30 +1,30 @@
+const numOfQuestions = 10;
+const numOfOptions = 4;
+
+class Question {
+    constructor(questionText, options, infoText, infoImage, infoImageAlt, sourceLink, sourceAriaLabel) {
+        this.questionText = questionText,
+        this.AnswerOptions = new Array(numOfOptions);
+        for (let i = 0; i < numOfOptions; i++) {
+            this.AnswerOptions[i] = {option: options[i].optionText, correct: options[i].correct}
+        }
+        this.infoText = infoText;
+        this.infoImage = infoImage;
+        this.infoImageAlt = infoImageAlt;
+        this.sourceLink = sourceLink;
+        this.sourceAriaLabel = sourceAriaLabel;
+    }
+}
+
+class Option {
+    constructor(optionText, correct) {
+        this.optionText = optionText,
+        this.correct = correct
+    }
+}
 
 document.addEventListener("DOMContentLoaded", function () {
-    const numOfQuestions = 10;
-    const numOfOptions = 4;
-
-    class Question {
-        constructor(questionText, options, infoText, infoImage, infoImageAlt, sourceLink, sourceAriaLabel) {
-            this.questionText = questionText,
-            this.AnswerOptions = new Array(numOfOptions);
-            for (let i = 0; i < numOfOptions; i++) {
-                this.AnswerOptions[i] = {option: options[i].optionText, correct: options[i].correct}
-            }
-            this.infoText = infoText;
-            this.infoImage = infoImage;
-            this.infoImageAlt = infoImageAlt;
-            this.sourceLink = sourceLink;
-            this.sourceAriaLabel = sourceAriaLabel;
-        }
-    }
-
-    class Option {
-        constructor(optionText, correct) {
-            this.optionText = optionText,
-            this.correct = correct
-        }
-    }
-
+   
     let questionOne = new Question("What is the smallest prime number?" 
                                     ,[new Option("1",0), new Option("2",1), new Option("3",0), new Option("5",0)]
                                     ,"A prime number (or prime) is a natural number greater than 1 that has no positive divisors other than 1 and itself. As such, 2 is the smallest prime number"
@@ -273,7 +273,7 @@ function checkAnswer(questionNumber, questions) {
         }
 
         // could add condition here to either generate next Q or give a total?
-        if (questionNumber <= 10) {
+        if (questionNumber <= numOfQuestions) {
             createNextQuestionButton(questionNumber, questions);
         }
         else {
@@ -319,6 +319,7 @@ function createFinishButton() {
 function displayFinishPage(score) {
     document.getElementById("finished").style.display = "";
     document.getElementById("final-score").innerText = score;
+    document.getElementById("numOfQs").innerText = numOfQuestions;
 
     // hide everything else
     document.getElementById("question-holder").style.display = "none";
