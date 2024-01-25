@@ -6,7 +6,7 @@ class Question {
         this.questionText = questionText,
         this.AnswerOptions = new Array(numOfOptions);
         for (let i = 0; i < numOfOptions; i++) {
-            this.AnswerOptions[i] = {option: options[i].optionText, correct: options[i].correct}
+            this.AnswerOptions[i] = {option: options[i].optionText, correct: options[i].correct};
         }
         this.infoText = infoText;
         this.infoImage = infoImage;
@@ -19,7 +19,7 @@ class Question {
 class Option {
     constructor(optionText, correct) {
         this.optionText = optionText,
-        this.correct = correct
+        this.correct = correct;
     }
 }
 

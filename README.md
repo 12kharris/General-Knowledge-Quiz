@@ -57,7 +57,7 @@ General Knowledge Quiz is a one page site which provides a short quiz to users w
 
 ## Testing 
 
-If this section grows too long, you may want to split it off into a separate file and link to it from here.
+The only remaining bug is where if you select an asnwer which is either red or green when the answers are in feedback state, the submit button style will return to default but the button does not function.
 
 All links open in a seperate tab and all images display correctly. An interesting bug when testing was the question number incrementing when generating the question but not for when checking the answer. For example, the quiz could display questions 1-3 but when checking the answer, the checkAnswer() function was receiving a question number of 1. As such, incrementing the question is done as an input when calling the checkAnswer() function rather than inside the function (e.g. checkAnswer(++questionNumber)). This lead to a bug of being able to click submit and increment the question number when no answer had been selected. This was fixed by disabling the submit button until an answer has been selected.
 
@@ -73,14 +73,13 @@ Extensive use of flexboxes allows the site to display differently for varying sc
 - HTML
     - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2F12kharris.github.io%2FGeneral-Knowledge-Quiz%2F)
 - CSS
-    - No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fvalidator.w3.org%2Fnu%2F%3Fdoc%3Dhttps%253A%252F%252Fcode-institute-org.github.io%252Flove-maths%252F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+    - No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2F12kharris.github.io%2FGeneral-Knowledge-Quiz%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
 - JavaScript
-    - No errors were found when passing through the official [Jshint validator](https://jshint.com/)
-      - The following metrics were returned: 
-      - There are 11 functions in this file.
-      - Function with the largest signature takes 2 arguments, while the median is 0.
-      - Largest function has 10 statements in it, while the median is 3.
-      - The most complex function has a cyclomatic complexity value of 4 while the median is 2.
+    - Some warnings were found but the vast majority were due to formatting when passing through the official [Jshint validator](https://jshint.com/)
+    - There are 12 functions in this file.
+    - Function with the largest signature take 7 arguments, while the median is 0.5.
+    - Largest function has 35 statements in it, while the median is 7.5.
+    - The most complex function has a cyclomatic complexity value of 12 while the median is 1.5
  
 
 ## Deployment
