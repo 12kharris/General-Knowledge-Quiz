@@ -145,9 +145,9 @@ document.addEventListener("DOMContentLoaded", function () {
     {
         holder.addEventListener("click", function() {
             // if the options are in the feedback state, do not add style when clicked
-            if (!holder.classList.contains("answer-grey", "answer-red", "answer-green")) {
+            if (!holder.classList.contains("answer-grey") || !holder.classList.contains("answer-red") || !holder.classList.contains("answer-green")) {
                 holder.getElementsByClassName("option")[0].checked = true;
-
+                console.log("CLICKED");
                 // re-enable the submit button when option is chosen
                 document.getElementById("submit-button").disabled = false;
                 let options = document.getElementsByClassName("options");
@@ -280,7 +280,6 @@ function checkAnswer(questionNumber, questions) {
             createFinishButton();
         }
         
-
         // unhide the info section for the answer and the scroll message
         document.getElementById("info-section").style.display = "";
         document.getElementById("scroll-message").style.display = "";

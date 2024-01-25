@@ -56,48 +56,83 @@ body {
 }
 
 /* credit to https://stackoverflow.com/questions/26754497/css-disable-hover-effect for all hover style logic*/
-#option1-box {
+#option1-box:not(.answer-green, .answer-grey, .answer-red) {
+    border-color: blue;
+}
+
+#option1-box:not(.option1-box-checked, .answer-green, .answer-grey, .answer-red):hover {
+    color: blue;
+}
+
+/*#option1-box {
     &:not(.answer-green, .answer-grey, .answer-red) {
         border-color: blue;
     } 
     &:not(.option1-box-checked, .answer-green, .answer-grey, .answer-red):hover {
         color: blue;
     }
+}*/
+
+#option2-box:not(.answer-green, .answer-grey, .answer-red) {
+    border-color: rgb(255, 255, 0);
+} 
+
+#option2-box:not(.option2-box-checked, .answer-green, .answer-grey, .answer-red):hover {
+    color: rgb(255, 255, 0);
 }
 
-#option2-box {
+/*#option2-box {
     &:not(.answer-green, .answer-grey, .answer-red) {
         border-color: rgb(255, 255, 0);
     } 
     &:not(.option2-box-checked, .answer-green, .answer-grey, .answer-red):hover {
         color: rgb(255, 255, 0);
     }
+}*/
+
+#option3-box:not(.answer-green, .answer-grey, .answer-red) {
+    border-color: orangered;
 }
 
-#option3-box {
+#option3-box:not(.option3-box-checked, .answer-green, .answer-grey, .answer-red):hover {
+    color: orangered;
+}
+
+/*#option3-box {
     &:not(.answer-green, .answer-grey, .answer-red) {
         border-color: orangered;
     }
     &:not(.option3-box-checked, .answer-green, .answer-grey, .answer-red):hover {
         color: orangered;
     }
+}*/
+
+#option4-box:not(.answer-green, .answer-grey, .answer-red) {
+    border-color: magenta;
 }
 
-#option4-box {
+#option4-box:not(.option4-box-checked, .answer-green, .answer-grey, .answer-red):hover {
+    color: magenta;
+}
+
+/*#option4-box {
     &:not(.answer-green, .answer-grey, .answer-red) {
         border-color: magenta;
     }
     &:not(.option4-box-checked, .answer-green, .answer-grey, .answer-red):hover {
         color: magenta;
     }
-}
+}*/
 
 .option1-box-checked {
-    &:not(.answer-green, .answer-grey, .answer-red) {
+    /*&:not(.answer-green, .answer-grey, .answer-red) {
         background-color: blue;
         color: white;
         font-weight: bold;
-    }
+    }*/
+    background-color: blue;
+    color: white;
+    font-weight: bold;
 }
 
 .option2-box-checked {
