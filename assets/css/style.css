@@ -64,15 +64,6 @@ body {
     color: blue;
 }
 
-/*#option1-box {
-    &:not(.answer-green, .answer-grey, .answer-red) {
-        border-color: blue;
-    } 
-    &:not(.option1-box-checked, .answer-green, .answer-grey, .answer-red):hover {
-        color: blue;
-    }
-}*/
-
 #option2-box:not(.answer-green, .answer-grey, .answer-red) {
     border-color: rgb(255, 255, 0);
 } 
@@ -80,15 +71,6 @@ body {
 #option2-box:not(.option2-box-checked, .answer-green, .answer-grey, .answer-red):hover {
     color: rgb(255, 255, 0);
 }
-
-/*#option2-box {
-    &:not(.answer-green, .answer-grey, .answer-red) {
-        border-color: rgb(255, 255, 0);
-    } 
-    &:not(.option2-box-checked, .answer-green, .answer-grey, .answer-red):hover {
-        color: rgb(255, 255, 0);
-    }
-}*/
 
 #option3-box:not(.answer-green, .answer-grey, .answer-red) {
     border-color: orangered;
@@ -98,15 +80,6 @@ body {
     color: orangered;
 }
 
-/*#option3-box {
-    &:not(.answer-green, .answer-grey, .answer-red) {
-        border-color: orangered;
-    }
-    &:not(.option3-box-checked, .answer-green, .answer-grey, .answer-red):hover {
-        color: orangered;
-    }
-}*/
-
 #option4-box:not(.answer-green, .answer-grey, .answer-red) {
     border-color: magenta;
 }
@@ -115,21 +88,7 @@ body {
     color: magenta;
 }
 
-/*#option4-box {
-    &:not(.answer-green, .answer-grey, .answer-red) {
-        border-color: magenta;
-    }
-    &:not(.option4-box-checked, .answer-green, .answer-grey, .answer-red):hover {
-        color: magenta;
-    }
-}*/
-
 .option1-box-checked {
-    /*&:not(.answer-green, .answer-grey, .answer-red) {
-        background-color: blue;
-        color: white;
-        font-weight: bold;
-    }*/
     background-color: blue;
     color: white;
     font-weight: bold;
