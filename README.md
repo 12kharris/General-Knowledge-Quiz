@@ -2,7 +2,7 @@
 
 General Knowledge Quiz is a one page site which provides a short quiz to users with no specific subject area as the focus. The site is targeted towards those who desire a short bit of fun and people of all ages. The site is fully responsive and provides feedback to the user on their answer selection and also provides additional info about the question when the asnwer is revealed, including a link to where they can read more about the topic.
 
-![Responsice Mockup](media/love_maths_mockup.png)
+![Responsive Mockup](https://github.com/12kharris/General-Knowledge-Quiz/blob/main/README-Images/GK%20responsive.png?raw=true)
 
 ## Features 
 
@@ -15,8 +15,9 @@ General Knowledge Quiz is a one page site which provides a short quiz to users w
   - Each answer has a unique colour and provides visual feedback to the user when it is hovered over or clicked so it is always clear to the user which option they have selected. 
   - When a user has submitted their answer, the answer section will change colour to indicate to the user if they selected the correct answer. If they did, their answer will display green and all other answers faded grey. If not, their selected answer will be highlighted red and the correct answer in green.
 
-![label](QnA section)
-![label](QnA section selected and hovered over)
+![label](https://github.com/12kharris/General-Knowledge-Quiz/blob/123839a280e87b0ec9752d65e3780f8a4cdbc752/README-Images/GK%20Q%20Area.png?raw=true)
+![label](https://github.com/12kharris/General-Knowledge-Quiz/blob/123839a280e87b0ec9752d65e3780f8a4cdbc752/README-Images/GK%20Q%20highlighted.png?raw=true)
+![label](https://github.com/12kharris/General-Knowledge-Quiz/blob/123839a280e87b0ec9752d65e3780f8a4cdbc752/README-Images/GK%20feedback.png?raw=true)
 
 - __The Button Area__
 
@@ -24,14 +25,14 @@ General Knowledge Quiz is a one page site which provides a short quiz to users w
   - All buttons will only be displayed and enabled when it makes sense to do so. For example, the submit button is disabled if an answer has not been chosen and when the correct answer has been revealed.
   - The 'Finish' button will only display at the end of the quiz and when clicked will alter the page to display a final score.
 
-![Game](button area submit and next Q)
-![Game](button area submit and finish)
+![Game](https://github.com/12kharris/General-Knowledge-Quiz/blob/123839a280e87b0ec9752d65e3780f8a4cdbc752/README-Images/GK%20buttons.png?raw=true)
+![Game](https://github.com/12kharris/General-Knowledge-Quiz/blob/123839a280e87b0ec9752d65e3780f8a4cdbc752/README-Images/GK%20button%20finished.png?raw=true)
 
 - __The Score Area__
 
   - This section tracks the user's correct answers and incorrect answers so they can keep track as they play
 
-![Score](score area)
+![Score](https://github.com/12kharris/General-Knowledge-Quiz/blob/123839a280e87b0ec9752d65e3780f8a4cdbc752/README-Images/GK%20score%20section.png?raw=true)
 
 - __The Info Area__
 
@@ -39,7 +40,13 @@ General Knowledge Quiz is a one page site which provides a short quiz to users w
   - In this section, additional information about the correct answer is displayed and a releveant picture.
   - There is also a link to the source of the information which the user can click for additional reading. 
 
-![Info](Info Area)
+![Info](https://github.com/12kharris/General-Knowledge-Quiz/blob/123839a280e87b0ec9752d65e3780f8a4cdbc752/README-Images/GK%20Info%20Area.png?raw=true)
+
+- __The Finished Screen__
+
+  - This is the final page show to a user after completing all questions. It shows their fina score and directions on how to replay the quiz.
+
+![Finished](https://github.com/12kharris/General-Knowledge-Quiz/blob/123839a280e87b0ec9752d65e3780f8a4cdbc752/README-Images/GK%20finished%20screen.png?raw=true)
 
 ### Features Left to Implement
 
