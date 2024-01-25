@@ -162,6 +162,10 @@ body {
     background-color: rgb(4, 196, 4);
 }
 
+#submit-button:hover {
+    color: white;
+}
+
 #submit-button:disabled {
     background-color: white;
     color: lightgray;
@@ -171,6 +175,10 @@ body {
 #nextQ-button {
     background-color: blue;
     color: white;
+}
+
+#nextQ-button:hover {
+    color: orange;
 }
 
 /* Score styles */
@@ -229,6 +237,10 @@ body {
 
 #finish-button {
     background-color: orange;
+}
+
+#finish-button:hover {
+    color: white;
 }
 
 #finished-text {

@@ -1,39 +1,103 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# General Knowledge Quiz
 
-Welcome,
+General Knowledge Quiz is a one page site which provides a short quiz to users with no specific subject area as the focus. The site is targeted towards those who desire a short bit of fun and people of all ages. The site is fully responsive and provides feedback to the user on their answer selection and also provides additional info about the question when the asnwer is revealed, including a link to where they can read more about the topic.
 
-This is the Code Institute student template for Codeanywhere. If you are using Gitpod then you need [this template](https://github.com/Code-Institute-Org/gitpod-full-template) instead.  We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+![Responsice Mockup](media/love_maths_mockup.png)
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **August 30th, 2023**
+## Features 
 
-## Codeanywhere Reminders
+### Existing Features
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+- __The Question and Option Area__
 
-`python3 -m http.server`
+  - The main feature of the page and the section which the user will interact with the most is the question and option area. The current question and question number is displayed at the top and 4 possible answers below. 
+  - The questions are displayed in a random order
+  - Each answer has a unique colour and provides visual feedback to the user when it is hovered over or clicked so it is always clear to the user which option they have selected. 
+  - When a user has submitted their answer, the answer section will change colour to indicate to the user if they selected the correct answer. If they did, their answer will display green and all other answers faded grey. If not, their selected answer will be highlighted red and the correct answer in green.
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+![label](QnA section)
+![label](QnA section selected and hovered over)
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
+- __The Button Area__
 
-`http_server`
+  - This section provides the buttons to submit answers, move onto the next question and finally finish the quiz.
+  - All buttons will only be displayed and enabled when it makes sense to do so. For example, the submit button is disabled if an answer has not been chosen and when the correct answer has been revealed.
+  - The 'Finish' button will only display at the end of the quiz and when clicked will alter the page to display a final score.
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+![Game](button area submit and next Q)
+![Game](button area submit and finish)
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+- __The Score Area__
 
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+  - This section tracks the user's correct answers and incorrect answers so they can keep track as they play
 
-To log into the Heroku toolbelt CLI:
+![Score](score area)
 
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+- __The Info Area__
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+  - This section only displays when the correct answer has been revealed. 
+  - In this section, additional information about the correct answer is displayed and a releveant picture.
+  - There is also a link to the source of the information which the user can click for additional reading. 
 
----
+![Info](Info Area)
 
-Happy coding!
+### Features Left to Implement
+
+- The current quiz is only 10 questions long. The ability to choose how many questions to make the quiz would be a nice feature.
+- Randomising the order of the options could also be implemented
+- A retry button rather than directing the user to refresh the page would also be a nice quality of life feature.
+- Additional features such as difficulty or allowing for subject area quizes would also be a good feature to add.
+
+## Testing 
+
+If this section grows too long, you may want to split it off into a separate file and link to it from here.
+
+All links open in a seperate tab and all images display correctly. An interesting bug when testing was the question number incrementing when generating the question but not for when checking the answer. For example, the quiz could display questions 1-3 but when checking the answer, the checkAnswer() function was receiving a question number of 1. As such, incrementing the question is done as an input when calling the checkAnswer() function rather than inside the function (e.g. checkAnswer(++questionNumber)). This lead to a bug of being able to click submit and increment the question number when no answer had been selected. This was fixed by disabling the submit button until an answer has been selected.
+
+Hidden radio buttons with the same name for the answer options means only 1 option can be selected without needing to use javascript to achieve this with buttons or divs with click events.
+
+When the answer is show, all answer options are disabled so that they become static and their styles won't change if the user attempts to interact with them.
+
+Extensive use of flexboxes allows the site to display differently for varying screen sizes and as such, few media queries were needed. The info section on smaller screens changes to a column flexbox so the image and text don't appear next to each other unlike larger screen sizes.
+
+
+### Validator Testing 
+
+- HTML
+    - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcode-institute-org.github.io%2Flove-maths%2F)
+- CSS
+    - No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fvalidator.w3.org%2Fnu%2F%3Fdoc%3Dhttps%253A%252F%252Fcode-institute-org.github.io%252Flove-maths%252F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+- JavaScript
+    - No errors were found when passing through the official [Jshint validator](https://jshint.com/)
+      - The following metrics were returned: 
+      - There are 11 functions in this file.
+      - Function with the largest signature takes 2 arguments, while the median is 0.
+      - Largest function has 10 statements in it, while the median is 3.
+      - The most complex function has a cyclomatic complexity value of 4 while the median is 2.
+ 
+
+## Deployment
+
+- The site was deployed to GitHub pages.
+
+The live link can be found here - https://12kharris.github.io/General-Knowledge-Quiz/
+
+
+## Credits 
+
+The use of data types for tracking which answer is correct was inspired from the Code Institute Love Maths walkthrough project. 
+The use of conditions in CSS styles was taken from https://stackoverflow.com/questions/26754497/css-disable-hover-effect. 
+
+The additional info for each question was taken from Wikipedia and all info sections have a link to the specific source provided.
+
+Some images were taken from the royalty free website Pixabay https://pixabay.com/ . 
+The remaining images were taken from the following sites:
+- https://stock.adobe.com/uk/search?k=babylon+garden 
+- https://www.istockphoto.com/search/2/image-film?phrase=keratin+protein 
+- https://www.reddit.com/r/Cyberpunk/comments/f0yxqt/neuromancer_by_william_gibson_pioneer_of_cyberpunk/ 
+- https://en.wikipedia.org/wiki/Krypton 
+- https://classicalwisdom.com/mythology/athena-in-ancient-literature/ 
+
+
+
+
